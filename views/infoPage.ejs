@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <% include header %>
+    <style>
+        table {
+            border: .1em solid black;
+        }
+        #infobuttons{
+  margin: auto;
+  text-align: center
+}
+    </style>
+  </head>
+  <body>
+    <% include navbar %>
+    <div class="container" id= "infobuttons">
+        <a href="/setup" ><button class="btn btn-primary" id="infobutton">Add Roommates</button></a>
+        <a href="/expenses" ><button class="btn btn-primary" id="infobutton">Add Expenses</button></a>
+        <a href="/payments"><button  class="btn btn-primary" id="infobutton">Add Payments</button></a>
+    </div>
+    <div class="container">
+        <h2>Overview of Your Household</h2>            
+        <table class="table table-striped">
+          <thead>
+            <tr id="table-headers">
+              <th>Name</th>
+              <th>Owed</th>
+            </tr>
+          </thead>
+          <tbody>
+              <%results.forEach((roommate)=>{%>
+            <tr>
+                <td><%=roommate.firstName%></td>
+                <td>$<%=(roommate.avgPrice).toFixed(2)%></td>
+                <%})%>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  </body>
+</html>

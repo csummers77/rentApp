@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <style>
+
+      body {
+        font-family: sans-serif;
+      }
+      .form {
+        margin: .5em;
+      }
+      .homeButton {
+        margin: 1em;
+      }
+
+      .container {
+        margin: auto;
+        text-align: center;
+        border: .2em solid black;
+        padding-bottom: 5em;
+        width: 90%;
+      }
+      .tableTitle {
+        margin-bottom: 1em;
+      }
+      #recentEntriesText{
+        font-size: 2.3em;
+        color: darkblue;
+        font-family: 'Courier New', Courier, monospace;
+        text-align: center;
+        border-bottom: .2em solid white;
+      }
+      table {
+        margin: auto;
+        margin-top: 5em;
+      }
+      .todaysDate {
+        text-align: center;
+        color: black;
+        text-shadow: -.05em -.05em darkblue;
+        background-color: transparent;
+        font-size: 1.6em;
+      }
+      .headerName{
+        text-align: center;
+        border-bottom: .2em solid black;
+        border-right: .2em solid black;
+      }
+      .headerDate{
+        text-align: center;
+        border-bottom: .2em solid black;
+      }
+      .headerAmount{
+        text-align: center;
+        border-left: .2em solid black;
+        border-bottom: .2em solid black;
+      }
+      tr {
+        border-bottom: .2em solid black;
+      }
+      td {
+        border-right: .2em solid black;
+      }
+
+      .title{
+          text-align: center;
+          margin: auto
+      }
+    </style>
+
+
+    <% include header %>
+  </head>
+  <body>
+    <% include navbar %>
+    <div class="container expense-form">
+        <div class="form">
+          <div class="note">
+            <h2 class="title">Input your expenses here and click add. Once finished click home to return to your homepage.</h2>
+          </div>
+          <form action="/addExpense" method="post">
+            <h2>Add Expense</h2>
+            <div class="row form-roommate">
+              <div class="col-md-6 offset-md-3">
+                <div class="form-group">
+                  <input name="name" type="text" class="form-control" placeholder="Expense" value="" />
+                </div>
+                <div class="form-group">
+                  <input name="amount" type="text" class="form-control" placeholder="AMOUNT" value="" />
+                </div>
+                <div class="form-group">
+                  <input class="form-control" type="date" name="date" />
+                </div>
+                <button class="btn btn-success register">Add</button>
+              </div>
+            </div>
+        </form>
+        <div class="homeButton">
+          <a href="/infoPage"><button class=" btn btn-primary">Home</button></a>
+        </div>
+      </div>
+        <!-- <div class ="signUpForm">
+            <form action="/addExpense" method="post">
+              <div class ="expenseInput">
+                <input class="formName" placeholder="EXPENSE" name="name" />       
+              </div>
+              <div class="dateInput">
+                <input class="formDate" type="date" name="date" />  
+              </div>
+              <div class="amountInput">
+                <input class="formAmount" placeholder="AMOUNT" name="amount" />
+              </div>
+            </form>
+        </div> -->
+
+      <div class="container">
+          <p class="todaysDate">
+            Today's Date:
+            <script> document.write(new Date().toLocaleDateString());</script>
+          </p>
+          <h1 id="recentEntriesText">RECENT ENTRIES</h1>
+        <table style="width:100%">
+            <tbody>
+              <tr class="firstTableRow">
+                <th class="headerName">NAME</th>
+                <th class="headerDate">DATE</th>
+                <th class="headerAmount">AMOUNT</th>
+              </tr>
+              <%results.forEach((expense)=>{%>
+            <tr>
+              <td><%=expense.name%></td>
+              <td><%=expense.date.toLocaleDateString()%></td>
+              <td>$<%=expense.amount%></td>
+              <%})%>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  </body>
+</html>

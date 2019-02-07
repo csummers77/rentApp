@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <% include header %> 
+</head>
+<body class="signup-page">
+    <% include navbar %>
+    <%- msg %>
+    <div class ="aboutParagraph">
+      <h1>Welcome to Domestico!</h1>
+      <h3>Your one stop shop for keeping track of the expenses for your household.</h3>
+      <h3>Simply register below or login to get started.</h3>
+    </div>
+    <div class="containerregister-form">
+        <div class="form">
+                <div class="note">
+                    <h2>Register</h2>
+                </div>
+                <div class="form-content">
+                    <form action="./signupProcess" method="post">
+                        <div class="row form-signUp">
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <input name="firstName" type="text" class="form-control" placeholder="First Name" value=""/>
+                                </div>
+                                <div class="form-group">
+                                    <input name="lastName" type="text" class="form-control" placeholder="Last Name" value=""/>
+                                </div>
+                                <div class="form-group">
+                                    <input name="email" type="text" class="form-control" placeholder="Email" value=""/>
+                                </div>
+                                <div class="form-group">
+                                    <input name="password" type="password" class="form-control" placeholder="Password" value=""/>
+                                </div>
+                                <button type="submit" class="btn btn-outline-success">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
